@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use \App\Db\Database;
+use \PDO;
 
 class Vaga
 {
@@ -22,9 +23,7 @@ class Vaga
         $this->data = date('Y-m-d H:i:s');
 
         $obDatabase = new Database('vagas');
-
         echo '<pre>'; print_r($obDatabase); echo '</pre>'; exit;
-        
     }
 }
 

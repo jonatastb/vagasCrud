@@ -12,13 +12,13 @@ class Database{
 
     const USER  = 'root';
 
-    const PASS  = 'root';
+    const PASS  = '';
 
     private $table;
 
     private $connection;
 
-    public function __contruct($table = null)
+    public function __construct($table = null)
     {
         $this->table = $table;
         $this->setConnection();
