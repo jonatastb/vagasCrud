@@ -14,32 +14,34 @@
 
     $resultados = '';
     foreach ($vagas as $vaga) {
-        $resultados .= '<tr>
-                            <td>'.$vaga->id.'</td>
-                            <td>'.$vaga->titulo.'</td>
-                            <td>'.$vaga->descricao.'</td>
-                            <td>'.($vaga->ativo == 's' ? 'Ativo' : 'Inativo' ).'</td>
-                            <td>'.date('d/m/Y à\s H:i:s', strtotime($vaga->data)).'</td>
-                            <td>
-                                <a href="editar.php?id='.$vaga->id.'">
-                                    <button class="btn btn-primary">
-                                        Editar
-                                    </button>
-                                </a>
-                                <a href="excluir.php?id='.$vaga->id.'">
-                                    <button class="btn btn-danger">
-                                        Excluir
-                                    </button>
-                                </a>
-                            </td>
-                        </tr>';
+        $resultados .= 
+        '<tr>
+            <td>'.$vaga->id.'</td>
+            <td>'.$vaga->titulo.'</td>
+            <td>'.$vaga->descricao.'</td>
+            <td>'.($vaga->ativo == 's' ? 'Ativo' : 'Inativo' ).'</td>
+            <td>'.date('d/m/Y à\s H:i:s', strtotime($vaga->data)).'</td>
+            <td>
+                <a href="editar.php?id='.$vaga->id.'">
+                    <button class="btn btn-primary">
+                        Editar
+                    </button>
+                </a>
+                <a href="excluir.php?id='.$vaga->id.'">
+                    <button class="btn btn-danger">
+                        Excluir
+                    </button>
+                </a>
+            </td>
+        </tr>';
     }
 
-    $resultados = !empty($resultados) ? $resultados :   '<tr>
-                                                            <td colspan="6" class="text-center">
-                                                                Nenhuma vaga encontrada!
-                                                            </td>
-                                                        </tr>' ;
+    $resultados = !empty($resultados) ? $resultados :   
+    '<tr>
+        <td colspan="6" class="text-center">
+            Nenhuma vaga encontrada!
+        </td>
+    </tr>' ;
 ?>
 
 <main>
@@ -48,6 +50,38 @@
         <a href="cadastrar.php">
             <button class="btn btn-success">Nova Vaga</button>
         </a>
+    </section>
+
+    <section>
+        <form method="get">
+
+            <div class="row my-4">
+
+                <div class="col">
+
+                    <label>Buscar por titulo</label>
+                    <input type="text" name="busca" class="form-control" value="<?=$busca?>">
+
+                </div>
+
+                <div class="col">
+
+                    <label>Status</label>
+                    <select name="status" class="form-control">
+                        <option value="">Ativa/Inativa</option>
+                        <option value="s" <?=$filtroStatus == 's' ? 'selected' : '' ?>>Ativa</option>
+                        <option value="n" <?=$filtroStatus == 'n' ? 'selected' : '' ?>>Inativa</option>
+                    </select>
+
+                </div>
+
+                <div class="col d-flex align-items-end">
+                    <button type="submit" class="btn btn-primary">Filtrar</button>
+                </div>
+
+            </div>
+
+        </form>
     </section>
 
     <section>
