@@ -87,4 +87,5 @@ class Database{
         
         return true;
     }
+}
 ?>
