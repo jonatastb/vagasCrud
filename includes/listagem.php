@@ -42,6 +42,22 @@
             Nenhuma vaga encontrada!
         </td>
     </tr>' ;
+
+    $paginacao = '';
+
+    $paginas = $obPagination->getPages();
+
+    foreach ($paginas as $key => $pagina) {
+
+        $class = $pagina['atual'] ? 'btn-primary' : 'btn-light';
+
+        $paginacao .= '
+        <a href="?pagina='.$pagina['pagina'].'">
+            <button type="button" class="btn '.$class   .'">'.$pagina['pagina'].'</button>    
+        </a>';
+    }
+
+
 ?>
 
 <main>
@@ -98,6 +114,10 @@
                 <?=$resultados?>
             </tbody>
         </table>
+    </section>
+
+    <section>
+        <?=$paginacao?>
     </section>
 
 </main>

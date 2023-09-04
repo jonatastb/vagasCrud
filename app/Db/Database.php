@@ -60,12 +60,13 @@ class Database{
     public function select($where = null, $order = null, $limit = null, $fields = '*')
     {
         $where = !empty($where) ? 'WHERE ' . $where : ''; 
-        $order = !empty($order) ? 'WHERE ' . $order : ''; 
-        $limit = !empty($limit) ? 'WHERE ' . $limit : ''; 
+        $order = !empty($order) ? 'ORDER ' . $order : ''; 
+        $limit = !empty($limit) ? 'LIMIT ' . $limit : ''; 
 
         $query = 'SELECT '.$fields.' FROM '.$this->table.' '.$where.' '.$order.' '.$limit;   
 
         return $this->execute($query);
+        
     }
 
     public function update($where, $values)
