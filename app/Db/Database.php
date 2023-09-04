@@ -87,6 +87,4 @@ class Database{
         
         return true;
     }
-    // testes
-}
 ?>
